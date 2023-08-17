@@ -62,7 +62,26 @@ class maze_manager
     };
 
     //Level 3
-    string three[24] =
+    string three[14] = 
+    {
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwhwhhhhhwhhhhhhhwhhhwwhhhw",
+        "wwhhhhwhwhhhwwwhwhwwhwhhhwhw",
+        "wwhwhwwhwwhwhhhhwhhhhhhwhwhw",
+        "wwhwhhhwhhhhhwwhwhwhwwhhhhhw",
+        "wwhwwwhwhwhwwhhhhwhhhhwhwhww",
+        "wshhhhhhhwhhhhwwhhhwwhhhwwfw",
+        "whwwwwwhwwwwwhhwwhwhwwwwhwhw",
+        "whhhhhhwhhhhhwhwhwwhhhhhhwhw",
+        "wwhwhwhhhwhwwhhhhhhhwhwwhhhw",
+        "whhhhhwwhwhhwhwhwhwwhhhhhwhw",
+        "wwwhwwwhhhwhwwwhwhhhhwwhwhhw",
+        "wwhhhhhhwhhhwhhhwwhwhhhhhhww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwww"
+    };
+
+    //Level 4
+    string four[24] =
     {
         "wwwwwwwwwwwwwwwww",
         "wwhhhhhhhhhhhhhhw",
@@ -102,11 +121,14 @@ int maze_manager::selector()
     if(unlocked[0]) cout << "1. First Steps" << endl;
     else cout << "1. [Locked]" << endl;
 
-    if(unlocked[1]) cout << "2. Not what you think" << endl;
+    if(unlocked[1]) cout << "2. Level 2" << endl;
     else cout << "2. [Locked]" << endl;
 
-    if(unlocked[2]) cout << "3. I've been here berofe" << endl;
+    if(unlocked[2]) cout << "3. Level 3" << endl;
     else cout << "3. [Locked]" << endl;
+
+    if(unlocked[3]) cout << "4. Level 4" << endl;
+    else cout << "4. [Locked]" << endl;
 
     cout << "0. Exit" << endl;
 
@@ -127,6 +149,7 @@ string* maze_manager::builder(int selected)
         case 1: return one;
         case 2: if(unlocked[1]) return two;
         case 3: if(unlocked[2]) return three;
+        case 4: if(unlocked[3]) return four;
     }
     return NULL;
 }
@@ -137,7 +160,8 @@ int maze_manager::size(int maze_number)
     {
         case 1: return 12;
         case 2: return 16;
-        case 3: return 24;
+        case 3: return 14;
+        case 4: return 24;
     }
     return NULL;
 }
