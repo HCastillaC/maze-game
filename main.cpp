@@ -16,7 +16,7 @@ class maze_manager
 {
     public:
 
-    bool unlocked[3] = {true, true, true};
+    bool unlocked[5] = {true, true, true, true, true};
 
     // h = Hall (open for walking)
     // w = Wall (unpassable)
@@ -109,6 +109,32 @@ class maze_manager
         "wwwwwwwwwwwwwwwww"
     };
 
+    //Level 5
+    string five[21] = 
+    {
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwhhhwhhhhwhwwwhhwhhhw",
+        "wwhhhhhwwhhhwhhhwhhhhhhwwwhwwhwhhhhhwwhwww",
+        "wwhwhwhhhwwhhhwhhhwwhwhhhhhhwhwwhwhwhhhwfw",
+        "wwwhhhhwhhwhwwhwhwhhhwhwhwwhwhhhhwhhhwwwhw",
+        "wwhhwhwwwhhhhwhwhhhwhhwwhwwhwwwwhhhwhhwhhw",
+        "wwhwwhhhhhwhwwhwwwhwhwhwhhwhhhwhhwwwhwwhww",
+        "whhhwhwwwhhhhhhwhwwwhhhwwhhhwhhwhwhwwhhhhw",
+        "wwwhhhwhwhwwwhwwhhhwwwwwwwwhwwhwhhhwhhwwhw",
+        "wwhwwhhhwhhhhhhhhwwwhhhhwhwwhwhwwhwwwhhhww",
+        "whhhhhwwhhwwhwhwhhwwwhwhhhwhhhhhwhhhwwwhhw",
+        "whwwwwhhhwwwhwhhwhwwhhhwwhwwwhwwwwhwhwhwhw",
+        "whhhhhhwhhhwhhwhhswwwwhwhhhhhhwhwhhhhwhhhw",
+        "wwhwhwwwwwhwwhwwwhwhhhhwwwwhwwhhwhwwhhhwhw",
+        "whhhwhhhwhhhhhhhhhwwhwhhwhhhhhhwwwwwwwwhhw",
+        "wwwhhhwhhhwwhwhwhwhhhwwwwwhwwwwwwwwwhhhhww",
+        "whhhwwwhwhhhwwwhhwwhwhhwwwwhhhhhhhhhhwwwww",
+        "whwhhhhhwwhwwhhwhwhhwhwwhhhhwwwwwwwwhhhwww",
+        "whwwwhwwhwhhhhwhwwhwhhhwhwwwhhhwwwwwwwhwww",
+        "whhhhhhhhhhwwhhhhhhhhwhwhhhhhwhhhhhhhhhwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+    };
+
     int selector();
     string* builder(int);
     int size(int);
@@ -129,10 +155,13 @@ int maze_manager::selector()
 
     if(unlocked[3]) cout << "4. Level 4" << endl;
     else cout << "4. [Locked]" << endl;
+    
+    if(unlocked[4]) cout << "5. Level 5" << endl;
+    else cout << "5. [Locked]" << endl;
 
     cout << "0. Exit" << endl;
 
-    while(selected < 0 or selected > 3)
+    while(selected < 0 or selected > 5)
     {
         cout << "Write the number of the maze you want to play: ";
         cin >> selected;
@@ -150,6 +179,7 @@ string* maze_manager::builder(int selected)
         case 2: if(unlocked[1]) return two;
         case 3: if(unlocked[2]) return three;
         case 4: if(unlocked[3]) return four;
+        case 5: if(unlocked[4]) return five;
     }
     return NULL;
 }
@@ -162,6 +192,7 @@ int maze_manager::size(int maze_number)
         case 2: return 16;
         case 3: return 14;
         case 4: return 24;
+        case 5: return 21;
     }
     return NULL;
 }
